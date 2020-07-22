@@ -29,6 +29,7 @@ spec:
       containers:
       - image: dockerashu/microashishapp:v004
         name: microashishapp
+        imagePullPolicy: Always
         resources: {}
 status: {}
 ---
