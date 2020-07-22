@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: ashish-space
+spec: {}
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: day3devsecops
+  name: day3devsecops
+  namespace: ashish-space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: day3devsecops
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: day3devsecops
+    spec:
+      containers:
+      - image: dockerashu/microashishapp:v004
+        name: microashishapp
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: day3devsecops
+  name: day3devsecops
+  namespace: ashish-space
+spec:
+  ports:
+  - name: 1234-80
+    port: 1234
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: day3devsecops
+  type: NodePort
+status:
+  loadBalancer: {}
